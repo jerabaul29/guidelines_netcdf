@@ -9,7 +9,7 @@ The main points to follow to be compliant / easy to reuse is to i) use well form
 
 Note that netCDF files can be edited (to change dimensions / variables names, attributes names and contents, add / remove any of these) separately from the data they contain using the tooling from netCDF Operator (NCO):
 
-- https://nco.sourceforge.net/ , among others (see there for more information):
+- https://nco.sourceforge.net/ (documentation), https://github.com/nco/nco (code development), among others (see there for more information):
   - ncatted netCDF ATTribute EDitor
   - ncrename netCDF RENAMEer
 
