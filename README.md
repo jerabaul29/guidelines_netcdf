@@ -4,14 +4,25 @@ My guidelines for netCDF files: what kind of attributes / parameters are needed,
 
 The main points to follow to be compliant / easy to reuse is to i) use well formed netCDF files, ii) follow metadata conventions. There are different kinds of metadata:
 
-- ACDD is discovery metadata, used to search for datasets / nc files
-- CF is use metadata, used to understand the content of the files
+- ACDD is discovery metadata, used to search for datasets / nc files,
+- CF is use metadata, used to understand the content of the files.
 
 ## Resources about metadata
 
 #### ACDD metadata
 
 #### CF metadata
+
+- homepage: http://cfconventions.org/index.html
+  - latest working draft of the conventions (link on the homepage): http://cfconventions.org/cf-conventions/cf-conventions.html
+
+- list of standard variable names:
+  - cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html
+
+- misc
+  - files should end in ```.nc```
+  - when a variable has a dependence in date or time (T), height or depth (Z), latitude (Y), longitude (X), recommend to order the dimensions as ```(T, Z, Y, X)```
+  - if variables provide information about another variable, use ancilliary variable description; see "Ancillary data" in http://cfconventions.org/cf-conventions/cf-conventions.html
 
 ## Metadata checkers
 
@@ -36,6 +47,10 @@ IOOS compliance checker version 5.0.2
 - Run compliance-checker (```cchecker.py``` command) against the files. Note it can be used online at https://compliance.ioos.us/index.html .
 
 ## Example and snippets
+
+See the examples at:
+
+- http://cfconventions.org/cf-conventions/cf-conventions.html#appendix-examples-discrete-geometries
 
 #### Expected global attributes for adc.met.no
 
