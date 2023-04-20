@@ -4,12 +4,16 @@ My guidelines for netCDF files: what kind of attributes / parameters are needed,
 
 The main points to follow to be compliant / easy to reuse is to i) use well formed netCDF files, ii) follow metadata conventions. There are different kinds of metadata:
 
-- ACDD is discovery metadata, used to search for datasets / nc files,
-- CF is use metadata, used to understand the content of the files.
+- ACDD (Attribute Conventions Dataset Discovery) is discovery metadata, used to search for datasets / nc files,
+- CF (Climate and Forecast metadata conventions) is use metadata, used to understand the content of the files.
 
 ## Resources about metadata
 
 #### ACDD metadata
+
+- homepage: https://wiki.esipfed.org/Category:Attribute_Conventions_Dataset_Discovery
+  - current release: http://wiki.esipfed.org/index.php/Attribute_Convention_for_Data_Discovery
+  - for example, 1-3 attributes: https://wiki.esipfed.org/Attribute_Convention_for_Data_Discovery_1-3
 
 #### CF metadata
 
@@ -18,6 +22,7 @@ The main points to follow to be compliant / easy to reuse is to i) use well form
 
 - list of standard variable names:
   - http://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html
+  - not sure what the difference is, but another possible source: https://vocab.nerc.ac.uk/standard_name/
 
 - misc
   - files should end in ```.nc```
@@ -38,19 +43,38 @@ Note: on my machine, I have installed all compliance checkers in a conda env:
 IOOS compliance checker version 5.0.2
 ```
 
-### cf-checker
+#### cf-checker
 
 - Run cf-checker (```cfchecks``` command) against the files.
 
-### compliance-checker
+#### compliance-checker
 
 - Run compliance-checker (```cchecker.py``` command) against the files. Note it can be used online at https://compliance.ioos.us/index.html .
 
 ## Example and snippets
 
-See the examples at:
+#### netCDF-CF file templates
+
+See the examples of netCDF-CF file templates at:
 
 - http://cfconventions.org/cf-conventions/cf-conventions.html#appendix-examples-discrete-geometries
+
+#### Attributes **required** by adc.met.no
+
+https://adc.met.no/node/4
+
+#### Dates
+
+Follow the most verbose ISO 8601: "2023-04-20T09:30:32+00:00" for UTC (+00:00) time.
+
+#### Units
+
+Not sure if there is a better source / way to visualize:
+
+- https://docs.unidata.ucar.edu/udunits/current/udunits2-base.xml
+- https://docs.unidata.ucar.edu/udunits/current/udunits2-derived.xml
+- https://docs.unidata.ucar.edu/udunits/current/udunits2-accepted.xml
+- https://docs.unidata.ucar.edu/udunits/current/udunits2-common.xml
 
 #### Expected global attributes for adc.met.no
 
