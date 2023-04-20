@@ -17,7 +17,7 @@ The main points to follow to be compliant / easy to reuse is to i) use well form
   - latest working draft of the conventions (link on the homepage): http://cfconventions.org/cf-conventions/cf-conventions.html
 
 - list of standard variable names:
-  - cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html
+  - http://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html
 
 - misc
   - files should end in ```.nc```
