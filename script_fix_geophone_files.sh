@@ -66,16 +66,21 @@ for FILENAME in Hydrophone_Tempelfjorden_February_2022_file*_*.nc; do
 
     ## add missing lat lon dimensions and variables
 
-    # add dimensions
+    # add dimensions: lat and lon, length 1
     ncap2 --history --append -s 'defdim("lat",1)' "$FILENAME"
     ncap2 --history --append -s 'defdim("lon",1)' "$FILENAME"
 
-    # add variables
+    # add variables: lat and lon are double arrays, (start, step, $dim) with $dim=1 is a single value
     ncap2 --history --append -s 'lat=array(78.4,0,$lat)' "$FILENAME"
     ncap2 --history --append -s 'lon=array(17.3,0,$lon)' "$FILENAME"
 
-    # add the metadata and fill
-    TODO
+    # add the attributes for lat and lon
+    ncatted --history -a standard_name,lat,c,c,"latitude" "$FILENAME"
+    ncatted --history -a long_name,lat,c,c,"station latitude" "$FILENAME"
+    ncatted --history -a units,lat,c,c,"degrees_north" "$FILENAME"
+    ncatted --history -a standard_name,lon,c,c,"longitude" "$FILENAME"
+    ncatted --history -a long_name,lon,c,c,"station longitude" "$FILENAME"
+    ncatted --history -a units,lon,c,c,"degrees_east" "$FILENAME"
 
     ## check metadata
     ncdump -h "$FILENAME"
