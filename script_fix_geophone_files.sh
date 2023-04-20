@@ -1,3 +1,4 @@
+
 # to run on a single file, just set filename (not used now)
 # FILENAME="Hydrophone_Tempelfjorden_February_2022_file1851_1900.nc"
 
@@ -63,7 +64,25 @@ for FILENAME in Hydrophone_Tempelfjorden_February_2022_file*_*.nc; do
     ## avoid cluttered history
     ncatted --history -a history,global,o,c,"created 2023-03 by Joey Voermans; attributes edited 2023-04 by Jean Rabault" "$FILENAME"
 
-    ## check
+    ## add missing lat lon dimensions and variables
+
+    # add dimensions
+    ncap2 --history --append -s 'defdim("lat",1)' "$FILENAME"
+    ncap2 --history --append -s 'defdim("lon",1)' "$FILENAME"
+
+    # add variables
+    ncap2 --history --append -s 'lat=array(78.4,0,$lat)' "$FILENAME"
+    ncap2 --history --append -s 'lon=array(17.3,0,$lon)' "$FILENAME"
+
+    # add the metadata and fill
+    TODO
+
+    ## check metadata
     ncdump -h "$FILENAME"
+
+    ## check content of new variables
+    # ncdump -v lat "$FILENAME"
+    # ncdump -v lon "$FILENAME"
+    ncdump -v lat,lon "$FILENAME"
 
 done
