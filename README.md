@@ -7,6 +7,14 @@ The main points to follow to be compliant / easy to reuse is to i) use well form
 - ACDD (Attribute Conventions Dataset Discovery) is discovery metadata, used to search for datasets / nc files,
 - CF (Climate and Forecast metadata conventions) is use metadata, used to understand the content of the files.
 
+Note that netCDF files can be edited (to change dimensions / variables names, attributes names and contents, add / remove any of these) separately from the data they contain using the tooling from netCDF Operator (NCO):
+
+- https://nco.sourceforge.net/ , among others (see there for more information):
+  - ncatted netCDF ATTribute EDitor
+  - ncrename netCDF RENAMEer
+
+This makes it easier to edit a file to make it netCDF-CF+ACDD compliant.
+
 ## Resources about metadata
 
 #### ACDD metadata
