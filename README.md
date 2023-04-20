@@ -43,12 +43,16 @@ Note: on my machine, I have installed all compliance checkers in a conda env:
 
 ```
 ~> eval "$(/home/jrmet/miniconda3/bin/conda shell.bash hook)"
-(base) ~> conda activate cfchecker
-(cfchecker) ~> cfchecks -h
+(base) ~> conda activate netcdf_utils
+(netcdf_utils) ~> cfchecks -h
  cfchecks [OPTIONS] file1 [file2...]
 ...
-(cfchecker) ~> cchecker.py -V
+(netcdf_utils) ~> cchecker.py -V
 IOOS compliance checker version 5.0.2
+(netcdf_utils) ~> ncrename --help
+...
+(netcdf_utils) ~> ncatted --help
+...
 ```
 
 #### cf-checker
