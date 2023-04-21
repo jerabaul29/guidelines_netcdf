@@ -39,8 +39,8 @@ for FILENAME in Hydrophone_Tempelfjorden_February_2022_file*_*.nc; do
     ncatted --history -a activity_type,global,c,c,"In Situ Ice-based station" "$FILENAME"
     ncatted --history -a iso_topic_category,global,c,c,"oceans" "$FILENAME"
     ncatted --history -a featureType,global,c,c,"timeSeries" "$FILENAME"
-    ncatted --history -a latitude_deployment,global,c,c,"XXTODO" "$FILENAME"
-    ncatted --history -a longitude_deployment,global,c,c,"XXTODO" "$FILENAME"
+    # ncatted --history -a latitude_deployment,global,c,c,"XXTODO" "$FILENAME"
+    # ncatted --history -a longitude_deployment,global,c,c,"XXTODO" "$FILENAME"
     ncatted --history -a standard_name_vocabulary,global,c,c,"CF Standard Name Table v80" "$FILENAME"
     ncatted --history -a processing_level,global,c,c,"Basic quality control" "$FILENAME"
 
@@ -62,7 +62,7 @@ for FILENAME in Hydrophone_Tempelfjorden_February_2022_file*_*.nc; do
     ncatted --history -a units,time,c,c,"nanoseconds since 1970-01-01T00:00:00+00:00" "$FILENAME"
 
     ## avoid cluttered history
-    ncatted --history -a history,global,o,c,"created 2023-03 by Joey Voermans; attributes edited 2023-04 by Jean Rabault" "$FILENAME"
+    ncatted --history -a history,global,o,c,"created 2023-03 by Joey Voermans, attributes edited 2023-04 by Jean Rabault" "$FILENAME"
 
     ## add missing lat lon dimensions and variables
 
@@ -71,8 +71,8 @@ for FILENAME in Hydrophone_Tempelfjorden_February_2022_file*_*.nc; do
     ncap2 --history --append -s 'defdim("lon",1)' "$FILENAME"
 
     # add variables: lat and lon are double arrays, (start, step, $dim) with $dim=1 is a single value
-    ncap2 --history --append -s 'lat=array(78.4,0,$lat)' "$FILENAME"
-    ncap2 --history --append -s 'lon=array(17.3,0,$lon)' "$FILENAME"
+    ncap2 --history --append -s 'lat=array(78.433232703800542,0,$lat)' "$FILENAME"
+    ncap2 --history --append -s 'lon=array(17.302795181317087,0,$lon)' "$FILENAME"
 
     # add the attributes for lat and lon
     ncatted --history -a standard_name,lat,c,c,"latitude" "$FILENAME"
