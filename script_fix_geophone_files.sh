@@ -5,6 +5,12 @@
 # to run on all files, loop
 for FILENAME in Hydrophone_Tempelfjorden_February_2022_file*_*.nc; do
 
+    echo "Working on $FILENAME"
+    
+    # new files without the buggy lat and lon used so far
+    ncks -O -x -v latitude,longitude $FILENAME ${FILENAME}_out.nc
+    FILENAME=${FILENAME}_out.nc
+
     echo "Fix CF and ACDD metadata for $FILENAME"
 
     ## global attributes
@@ -63,7 +69,7 @@ for FILENAME in Hydrophone_Tempelfjorden_February_2022_file*_*.nc; do
 
     ## avoid cluttered history
     ncatted --history -a history,global,o,c,"created 2023-03 by Joey Voermans, attributes edited 2023-04 by Jean Rabault" "$FILENAME"
-
+    
     ## add missing lat lon dimensions and variables
 
     # add dimensions: lat and lon, length 1
