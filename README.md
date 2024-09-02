@@ -2,7 +2,7 @@
 
 My guidelines for netCDF files: what kind of attributes / parameters are needed, usual dimension names, etc. The motivation for this repository is that I always end up struggling to find the necessary instructions / list of points to follow to package my netCDF files following CF conventions. Strongly fitted to / following what is recommended by adc.met.no and inspired from the content there.
 
-The main points to follow to be compliant / easy to reuse is to i) use well formed netCDF files, ii) follow metadata conventions. There are different kinds of metadata:
+The main points to follow to be compliant / easy to reuse is to i) use well formed netCDF files, ii) follow CF conventions, iii) follow metadata conventions. There are 2 different kinds of metadata:
 
 - ACDD (Attribute Conventions Dataset Discovery) is discovery metadata, used to search for datasets / nc files,
 - CF (Climate and Forecast metadata conventions) is use metadata, used to understand the content of the files.
@@ -13,7 +13,7 @@ Note that netCDF files can be edited (to change dimensions / variables names, at
   - ncatted netCDF ATTribute EDitor
   - ncrename netCDF RENAMEer
 
-This makes it easier to edit a file to make it netCDF-CF+ACDD compliant.
+This makes it easier to edit a file to make it netCDF-CF+ACDD compliant. It is also possible to edit the file using `xarray`.
 
 ## Resources about metadata
 
@@ -30,12 +30,20 @@ This makes it easier to edit a file to make it netCDF-CF+ACDD compliant.
 
 - list of standard variable names:
   - http://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html
-  - not sure what the difference is, but another possible source: https://vocab.nerc.ac.uk/standard_name/
+ 
+- variable names and related:
+  - `standard_name` should be extracted from https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html ; it carries both meaning and unit; whenever possible, this should be included for variables
+  - `long_name` is a human-written name (can be a normal language sentence) describing the variable; this should be present in general, in combination with `standard_name`
+  - whenever there is no `standard_name` describing the variable, there should be at least a detailed `long_name` included, together with a `units` (note the `s` at the end!)
 
 - misc
   - files should end in ```.nc```
   - when a variable has a dependence in date or time (T), height or depth (Z), latitude (Y), longitude (X), recommend to order the dimensions as ```(T, Z, Y, X)```
   - if variables provide information about another variable, use ancilliary variable description; see "Ancillary data" in http://cfconventions.org/cf-conventions/cf-conventions.html
+
+#### creators information
+
+The `creator_name`, `creator_email`, `creator_institution` should be comma-separated and have all the same length (e.g., "Name1 Surname1, Name2 Surname2, and "Name1.Surname1@mail.com, Name2.Surname2@mail.com", and "Institute1, Institute2").
 
 ## Metadata checkers
 
